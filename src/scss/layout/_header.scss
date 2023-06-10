@@ -1,0 +1,27 @@
+.header {
+    width: 100vw;
+    height: 20vh;
+    background-color: aqua;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    &__section {
+       background-color: aliceblue;
+       display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+       width: 90vw;
+       height: 5vh;
+       position: relative;
+       transform: translate(0px, 20px);
+     &--input {
+           
+        }
+     &--button {
+        background-color: blue;
+        color: white;
+     }
+    }
+    
+}
