@@ -9,6 +9,8 @@ const url = 'https://dev.adalab.es/api/disney?pageSize=15';
 let characterFavorite = [];
 let characterApi = [];
 
+const characterLS = JSON.parse(localStorage.getItem("characters"));
+
 fetch(url)
 .then((response) => response.json())
 .then((inf) => {
@@ -26,7 +28,7 @@ function renderCharacter(list) {
         else {
             html +=`<li class="js_li_character" id="${personaje._id}"><img src="${personaje.imageUrl}" alt=""><p>${personaje.name}</p></li>`
         }
-    }
+    };
 
     return html
 };
@@ -35,8 +37,8 @@ function generateEvents(){
     const liCharacter = document.querySelectorAll('.js_li_character');
     for(const li of liCharacter){
         li.addEventListener('click', handleClick);
-        }
-}
+        };
+};
 
 function handleClick(event) {
     const idCharacter = String(event.currentTarget.id);
@@ -52,15 +54,18 @@ function handleClick(event) {
         characterFavorite.splice(indexCharacter, 1);
     }
 
+    localStorage.setItem("characters" , JSON.stringify(characterApi));
+
     renderFavoriteList();
-}
+};
 
 function renderFavoriteList(){
     ulFavorite.innerHTML = '';
     for(const fav of characterFavorite) {
         ulFavorite.innerHTML += `<li class="js_li_character colorCharacter" id="${fav._id}"><img src="${fav.imageUrl}" alt=""><p class="colorLetter">${fav.name}</p></li>`;
-    }
-}
+    };
+   
+};
 
 
 
