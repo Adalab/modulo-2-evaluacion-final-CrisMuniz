@@ -25,8 +25,7 @@ function renderCharacter(list) {
             html +=`<li class="js_li_character" id="${personaje._id}"><img src="${personaje.imageUrl}" alt=""><p>${personaje.name}</p></li>`
         }
     }
-   
-  
+
     return html
 };
 
@@ -34,14 +33,15 @@ function generateEvents(){
     const liCharacter = document.querySelectorAll('.js_li_character');
     for(const li of liCharacter){
         li.addEventListener('click', handleClick);
-        console.log(li)
+        // console.log(li)
         }
-        
 }
 
 function handleClick(event) {
-    const idCharacter = event.currentTarget.id;
-    console.log(idCharacter);
+    const idCharacter = String(event.currentTarget.id);
+
+    const selectedCharacter = characterApi.find((item) => String(item._id) === idCharacter);
+    console.log(selectedCharacter);
 }
 
 
