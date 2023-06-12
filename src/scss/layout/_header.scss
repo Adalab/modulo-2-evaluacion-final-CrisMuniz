@@ -18,13 +18,10 @@
        height: 5vh;
        position: relative;
        transform: translate(0px, 20px);
-     &--input {
-           
-        }
      &--button {
-        background-color: blue;
-        color: white;
+        background-color:$primary-color;
+        color:$secondary-color;
      }
     }
-    
+
 }

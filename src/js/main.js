@@ -78,8 +78,8 @@ function renderFavoriteList(){
 };
 const handleSearch =(event) => {
     event.preventDefault();
-    console.log("Boton busqueda");
-    fetch(`https://api.disneyapi.dev/character?name=${inputSearch.value}`)
+    const search = inputSearch.value;
+    fetch(`https://api.disneyapi.dev/character?name=${search}`)
     .then((response) => response.json())
     .then((inf) => {
         characterApi = inf.data;

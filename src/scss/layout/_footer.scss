@@ -1,12 +1,12 @@
 .footer {
     width: 100vw;
     height: 10vh;
-    background-color: blue;
+    background-color:$primary-color;
     display: flex;
     justify-content: center;
     align-items: center;
     &__h4 {
-        color: white;
+        color: $secondary-color;
 
     }
 }
