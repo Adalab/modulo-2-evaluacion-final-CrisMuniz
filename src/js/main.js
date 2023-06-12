@@ -2,6 +2,8 @@
 
 const ulElement = document.querySelector('.js_character_list');
 const ulFavorite = document.querySelector('.js_character_fav');
+const inputSearch = document.querySelector('.js_inputSearch');
+const btnSearch = document.querySelector('.js_btn');
 // const url = 'https://api.disneyapi.dev/character?pageSize=50';
 const url = 'https://dev.adalab.es/api/disney?pageSize=15';
 
@@ -10,8 +12,6 @@ let characterFavorite = [];
 let characterApi = [];
 
 const characterLS = JSON.parse(localStorage.getItem("characters"));
-console.log(characterLS);
-
 
 
 fetch(url)
@@ -21,13 +21,14 @@ fetch(url)
     ulElement.innerHTML = renderCharacter(characterApi);
     generateEvents();
 });
+
 init();
 function init() {
     if(characterLS !== null) {
         characterFavorite = characterLS;
         renderFavoriteList();
     }
-}
+};
 
 function renderCharacter(list) {
     let html = '';
@@ -71,12 +72,23 @@ function handleClick(event) {
 
 function renderFavoriteList(){
     ulFavorite.innerHTML = '';
-    // console.log(characterFavorite);
-    // console.log(typeOf(characterFavorite));
     for(const fav of characterFavorite) {
         ulFavorite.innerHTML += `<li class="js_li_character colorCharacter" id="${fav._id}"><img src="${fav.imageUrl}" alt=""><p class="colorLetter">${fav.name}</p></li>`;
     };
 };
+const handleSearch =(event) => {
+    event.preventDefault();
+    console.log("Boton busqueda");
+    fetch(`https://api.disneyapi.dev/character?name=${inputSearch.value}`)
+    .then((response) => response.json())
+    .then((inf) => {
+        characterApi = inf.data;
+        ulElement.innerHTML = renderCharacter(characterApi);
+        generateEvents();
+    });
+}
+btnSearch.addEventListener('click', handleSearch);
+
 
 
 
