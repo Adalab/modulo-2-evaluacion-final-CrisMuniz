@@ -1,7 +1,10 @@
 .header {
     width: 100vw;
     height: 20vh;
-    background-color: aqua;
+    background-image: url("../images/fondoDisney.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
     display: flex;
     align-items: flex-end;
     justify-content: center;

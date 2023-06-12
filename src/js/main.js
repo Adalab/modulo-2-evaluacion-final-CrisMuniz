@@ -21,12 +21,12 @@ fetch(url)
 
 function renderCharacter(list) {
     let html = '';
-    for(const personaje of list){
-        if( personaje.imageUrl === ''){
-            html +=`<li class="js_li_character" id="${personaje._id}"><img src="/assets/images/disney.png" alt=""><p>${personaje.name}</p></li>`
+    for(const cartoon of list){
+        if( cartoon.imageUrl === ''){
+            html +=`<li class="js_li_character" id="${cartoon._id}"><img src="/assets/images/disney.png" alt=""><p>${cartoon.name}</p></li>`
         }
         else {
-            html +=`<li class="js_li_character" id="${personaje._id}"><img src="${personaje.imageUrl}" alt=""><p>${personaje.name}</p></li>`
+            html +=`<li class="js_li_character" id="${cartoon._id}"><img src="${cartoon.imageUrl}" alt=""><p>${cartoon.name}</p></li>`
         }
     };
 
