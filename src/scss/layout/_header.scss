@@ -1,9 +1,10 @@
 .header {
     width: 100vw;
     height: 20vh;
+    object-fit:cover;
     background-image: url("../images/fondoDisney.png");
     background-repeat: no-repeat;
-    background-position: center;
+    background-position: center center;
     background-size: cover;
     display: flex;
     align-items: flex-end;
@@ -11,13 +12,17 @@
     &__section {
        background-color: aliceblue;
        display: flex;
-        justify-content: center;
-        align-items: center;
-        gap: 20px;
+       justify-content: center;
+       align-items: center;
+       gap: 20px;
        width: 90vw;
        height: 5vh;
        position: relative;
        transform: translate(0px, 20px);
+     &--input {
+      border: 2px solid $primary-color;
+
+     }
      &--button {
         background-color:$primary-color;
         color:$secondary-color;
@@ -25,3 +30,24 @@
     }
 
 }
+@media screen and (min-width: 768px){
+   .header {
+      &__section{
+         &--input {
+            width: 350px;
+            height: 30px;
+         }
+      }
+   }
+}
+@media screen and (min-width: 1024px){
+   .header {
+      &__section{
+         &--input {
+            width: 600px;
+            height: 30px;
+         }
+      }
+   }
+}
+
