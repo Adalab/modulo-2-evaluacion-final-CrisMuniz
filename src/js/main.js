@@ -10,6 +10,9 @@ let characterFavorite = [];
 let characterApi = [];
 
 const characterLS = JSON.parse(localStorage.getItem("characters"));
+console.log(characterLS);
+
+
 
 fetch(url)
 .then((response) => response.json())
@@ -18,6 +21,13 @@ fetch(url)
     ulElement.innerHTML = renderCharacter(characterApi);
     generateEvents();
 });
+init();
+function init() {
+    if(characterLS !== null) {
+        characterFavorite = characterLS;
+        renderFavoriteList();
+    }
+}
 
 function renderCharacter(list) {
     let html = '';
@@ -54,18 +64,22 @@ function handleClick(event) {
         characterFavorite.splice(indexCharacter, 1);
     }
 
-    localStorage.setItem("characters" , JSON.stringify(characterApi));
+    localStorage.setItem("characters" , JSON.stringify(characterFavorite));
 
     renderFavoriteList();
 };
 
 function renderFavoriteList(){
     ulFavorite.innerHTML = '';
+    // console.log(characterFavorite);
+    // console.log(typeOf(characterFavorite));
     for(const fav of characterFavorite) {
         ulFavorite.innerHTML += `<li class="js_li_character colorCharacter" id="${fav._id}"><img src="${fav.imageUrl}" alt=""><p class="colorLetter">${fav.name}</p></li>`;
     };
-   
 };
+
+
+
 
 
 
