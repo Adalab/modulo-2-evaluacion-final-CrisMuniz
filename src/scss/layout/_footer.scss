@@ -1,11 +1,13 @@
 .footer {
     width: 100vw;
-    height: 10vh;
+    height: 50px;
     background-color:$primary-color;
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
+    position:fixed;
+    bottom: 0;
     &__h4 {
         color: $secondary-color;
 
