@@ -5,6 +5,7 @@ const ulElement = document.querySelector('.js_character_list');
 const ulFavorite = document.querySelector('.js_character_fav');
 const inputSearch = document.querySelector('.js_inputSearch');
 const btnSearch = document.querySelector('.js_btn');
+const btnLog = document.querySelector('.js_Log');
 // const url = 'https://api.disneyapi.dev/character?pageSize=50';
 const url = 'https://dev.adalab.es/api/disney?pageSize=15';
 
@@ -37,10 +38,10 @@ function renderCharacter(list) {
   let html = '';
   for(const cartoon of list){
     if( cartoon.imageUrl === ''){
-      html +=`<li class="js_li_character" id="${cartoon._id}"><img src="/assets/images/disney.png" alt=""><p>${cartoon.name}</p></li>`;
+      html +=`<li class="js_li_character" id="${cartoon._id}"><img src="/assets/images/disney.png" alt=""><p>${cartoon.name}</p><p>Num series:${cartoon.tvShows}</p></li>`;
     }
     else {
-      html +=`<li class="js_li_character" id="${cartoon._id}"><img src="${cartoon.imageUrl}" alt=""><p>${cartoon.name}</p></li>`;
+      html +=`<li class="js_li_character" id="${cartoon._id}"><img src="${cartoon.imageUrl}" alt=""><p>${cartoon.name}</p>><p>Num series:${cartoon.tvShows.length}</p></li>`;
     }
   }
 
@@ -94,6 +95,13 @@ const handleSearch =(event) => {
 };
 // Evento de busqueda de personaje
 btnSearch.addEventListener('click', handleSearch);
+
+function handleClickLog(event){
+  event.preventDefault();
+  console.log("Tienes " + characterFavorite.length + "  favoritos");
+}
+
+btnLog.addEventListener('click', handleClickLog);
 
 
 
